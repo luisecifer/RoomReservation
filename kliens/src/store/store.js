@@ -25,10 +25,10 @@ export default new Vuex.Store({
   },
   actions: {
     setPassword ({commit}, password) {
-      commit ('setPassword', password)
+      commit('setPassword', password)
     },
     setUser ({commit}, user) {
-      commit ('setPassword', user)
+      commit('setPassword', user)
     }
   }
 })

@@ -110,4 +110,8 @@ li {
 a {
   color: #42b983;
 }
+.foglGomb {
+  border-radius: 5px;
+  text-shadow: 1px 1px 4px #aaa;
+}
 </style>

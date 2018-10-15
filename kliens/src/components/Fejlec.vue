@@ -8,10 +8,12 @@
       </span>
     </v-toolbar-title>
       <v-toolbar-items>
-        <!-- Még meg kell csinálni! -->
-        <!-- <v-btn flat dark>
-          Kereső
-        </v-btn> -->
+        <!-- Test -->
+        <v-btn
+          @click="goTo({name: 'browse'})"
+          flat dark>
+          Browse
+        </v-btn>
       </v-toolbar-items>
     <v-spacer></v-spacer>
       <v-toolbar-items>
@@ -27,6 +29,12 @@
           @click="goTo({name: 'register'})">
           Regisztráció
         </v-btn>
+        <v-btn
+          v-if="$store.state.loggedIn"
+          flat dark
+          @click="logout">
+          Kilépés
+        </v-btn>
       </v-toolbar-items>
   </v-toolbar>
 </template>
@@ -36,6 +44,13 @@ export default {
   methods: {
     goTo (route) {
       this.$router.push(route)
+    },
+    logout () {
+      this.$store.dispatch('setPassword', null)
+      this.$store.dispatch('setUser', null)
+      this.$router.push({
+        name: 'home'
+      })
     }
   }
 }
