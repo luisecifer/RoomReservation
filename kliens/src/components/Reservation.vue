@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-layout v-if="$store.state.loggedIn">
+    <v-layout>
       <v-flex xs10 offset-xs1>
         <div class="white elevation-2 mt-5">
           <v-toolbar flat dense class="purple darken-1" dark>
@@ -19,63 +19,12 @@
               v-model="reservation.phonenumber">
             </v-text-field>
             <v-select
-              v-model="form.szobak"
-              :items="szobaValaszt"
-              color="pink"
-              label="Szobatípusok"
-              required>
-            </v-select>
-            <!-- <v-select
+              :items="szobak"
               v-model="reservation.roomId"
-              :items="items"
-              label="Standard">
-            </v-select> -->
-            <!-- <v-text-field
-              label= {{ foglSzoba }}
-              v-model="reservation.phonenumber">
-            </v-text-field> -->
-            <!-- <div>
-              {{ foglSzoba }}
-            </div> -->
-
-            <!-- <v-btn
-              color="light-green darken-1"
-              light>
-              egyágyas szoba
-              <v-icon medium right>local_hotel</v-icon>
-            </v-btn>
-            <v-btn
-              color="light-green darken-1"
-              light>
-              kétágyas szoba
-              <v-icon medium right>local_hotel</v-icon>
-            </v-btn>
-            <v-btn
-              color="light-green darken-1"
-              light>
-              családi szoba
-              <v-icon medium right>local_hotel</v-icon>
-            </v-btn>
-            <v-btn
-              color="light-green darken-1"
-              light>
-              deluxe szoba
-              <v-icon medium right>local_hotel</v-icon>
-            </v-btn>
-            <v-btn
-              color="light-green darken-1"
-              light>
-              lakosztály
-              <v-icon medium right>local_hotel</v-icon>
-            </v-btn> -->
-
-            <div>
-              <h1>
-                Szobatípusok
-              </h1>
-            </div>
+              color="pink"
+              label="Szobatípusok">
+            </v-select>
             <div class="pl-4 pr-4 pt-2 pb-2">
-
               <v-layout row wrap>
                 <v-flex>
                   <br>
@@ -86,13 +35,23 @@
                   <br>
                   <v-date-picker
                     class="purple" dark
-                    v-model="reservation.date"
+                    v-model="reservation.checkIn"
                     :min="new Date().toISOString().slice(0,10)"
                     ref="picker"
                     full-width>
                   </v-date-picker>
                   <p>
-                    {{ reservation.date }}
+                    {{ reservation.checkIn }}
+                  </p>
+                  <v-date-picker
+                    class="purple" dark
+                    v-model="reservation.checkOut"
+                    :min="new Date().toISOString().slice(0,10)"
+                    ref="picker"
+                    full-width>
+                  </v-date-picker>
+                  <p>
+                    {{ reservation.checkOut }}
                   </p>
                 </v-flex>
                 <br>
@@ -117,58 +76,38 @@
 <script>
 import Hitelesites from '@/services/Hitelesites'
 export default {
-  // props: {
-  //   foglSzoba: {
-  //     type: String
-  //   }
-  // },
   data () {
-    const szobaForm = Valaszto.sz ({
-      szobak: ''
-    })
     return {
-      form: Object.assign({}, szobaForm),
-        szobaValaszt: ['Egyágyas szoba', 'Kétágyas szoba', 'Családi szoba', 'Deluxe szoba', 'Lakosztály']
-      },
+      szobak: ['Egyágyas szoba', 'Kétágyas szoba', 'Családi szoba', 'Deluxe szoba', 'Lakosztály'],
       reservation: {
         name: '',
         phonenumber: '',
-        roomId: '',
-        date: new Date().toISOString().slice(0, 10)
-      }
-    }
-  },
-  // data: () => ({
-  //   items: ['Egyágyas szoba', 'Kétágyas szoba', 'Családi szoba', 'Deluxe szoba', 'Lakosztály']
-  // }),
-  methods: {
-    // egyagy () {
-    //   this.foglSzoba = 'Egyágyas szoba'
-    // },
-    // ketagy () {
-    //   this.foglSzoba = 'Kétágyas szoba'
-    // },
-    // csalad () {
-    //   this.foglSzoba = 'Családi szoba'
-    // },
-    // deluxe () {
-    //   this.foglSzoba = 'Deluxe szoba'
-    // },
-    // lakoszt () {
-    //   this.foglSzoba = 'Lakosztály'
-    // },
-    async foglal () {
-      try {
-        await Hitelesites.post(this.reservation)
-      } catch (err) {
-        console.log()
+        roomId: [],
+        checkIn: new Date().toISOString().slice(0, 10),
+        checkOut: new Date().toISOString().slice(0, 10)
       }
     }
   },
   computed: {
     dateTime () {
-      const date = new Date(this.date)
-      return date
+      const checkIn = new Date(this.checkIn)
+      return checkIn
+    },
+    dateTime2 () {
+      const checkOut = new Date(this.checkOut)
+      return checkOut
+    }
+  },
+  methods: {
+    async foglal () {
+      try {
+        await Hitelesites.post(this.reservation)
+        this.$router.push({
+          name: 'browse'
+        })
+      } catch (err) {
+        console.log()
+      }
     }
   }
 }

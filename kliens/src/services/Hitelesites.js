@@ -10,6 +10,9 @@ export default{
   index () {
     return Api().get('browse')
   },
+  // show (reservationId) {
+  //   return Api().get(`reservation/${reservationId}`)
+  // },
   post (reservation) {
     console.log(reservation)
     return Api().post('reservation', reservation)

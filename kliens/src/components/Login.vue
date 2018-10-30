@@ -17,7 +17,7 @@
             v-model="password">
           </v-text-field>
           <br>
-          <div class="error" v-html="error"/>
+          <div class="alert" v-html="error"/>
           <br>
           <v-btn
             class="purple darken-1" dark
@@ -48,12 +48,12 @@ export default {
         })
         this.$store.dispatch('setPassword', response.data.password)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: 'reservation'
+        })
       } catch (error) {
         this.error = error.response.data.error
       }
-      this.$router.push({
-        name: 'reservation'
-      })
     }
   }
 }
@@ -61,8 +61,8 @@ export default {
 
 <style scoped>
 
-.error {
-  color: black;
+.alert {
+  color: red;
 }
 
 </style>

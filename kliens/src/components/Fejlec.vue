@@ -8,11 +8,10 @@
       </span>
     </v-toolbar-title>
       <v-toolbar-items>
-        <!-- Test -->
         <v-btn
           @click="goTo({name: 'browse'})"
           flat dark>
-          Browse
+          Keresés
         </v-btn>
       </v-toolbar-items>
     <v-spacer></v-spacer>

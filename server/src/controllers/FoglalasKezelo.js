@@ -4,7 +4,7 @@ module.exports = {
   async index (req, res) {
     try {
       const reservations = await Reservation.findAll({
-        limit: 10
+        limit: 50
       })
       res.send(reservations)
     } catch (err) {

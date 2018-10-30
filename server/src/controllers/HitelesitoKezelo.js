@@ -5,6 +5,9 @@ module.exports = {
     try {
         const user = await User.create(req.body)
         res.send(user.toJSON())
+        return res.status().send({
+          success: 'Sikeres regisztráció'
+        })
       } catch (err) {
         return res.status(400).send({
           error: 'Az email cím már foglalt.'

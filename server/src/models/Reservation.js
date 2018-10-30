@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     phonenumber: DataTypes.INTEGER,
     roomId: DataTypes.STRING,
-    date: DataTypes.TEXT
+    checkIn: DataTypes.TEXT,
+    checkOut: DataTypes.TEXT
   })
   return Reservation
 }
