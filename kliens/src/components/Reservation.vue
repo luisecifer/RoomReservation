@@ -28,9 +28,8 @@
               <v-layout row wrap>
                 <v-flex>
                   <br>
-                  <br>
                   <h1>
-                    Kérem válasszon dátumot
+                    Bejelentkezési dátum
                   </h1>
                   <br>
                   <v-date-picker
@@ -43,6 +42,11 @@
                   <p>
                     {{ reservation.checkIn }}
                   </p>
+                  <br>
+                  <h1>
+                    Kijelentkezési dátum
+                  </h1>
+                  <br>
                   <v-date-picker
                     class="purple" dark
                     v-model="reservation.checkOut"
