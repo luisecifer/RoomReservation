@@ -4,7 +4,6 @@ import KezdoOldal from '@/components/KezdoOldal'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Reservation from '@/components/Reservation'
-import ViewRes from '@/components/ViewRes'
 import Browse from '@/components/Browse'
 
 Vue.use(Router)
@@ -35,11 +34,6 @@ export default new Router({
       path: '/browse',
       name: 'browse',
       component: Browse
-    },
-    {
-      path: '/reservation/:reservationId',
-      name: 'viewres',
-      component: ViewRes
     }
   ]
 })

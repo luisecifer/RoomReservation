@@ -9,6 +9,7 @@
     </v-toolbar-title>
       <v-toolbar-items>
         <v-btn
+          v-if="$store.state.loggedIn"
           @click="goTo({name: 'browse'})"
           flat dark>
           Keresés

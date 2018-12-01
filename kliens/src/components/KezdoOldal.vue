@@ -28,14 +28,14 @@
         <a
           href="http://router.vuejs.org/"
           target="_blank">
-          vue-router
+          Vue-router
         </a>
       </li>
       <li>
         <a
           href="http://vuex.vuejs.org/"
           target="_blank">
-          vuex
+          Vuex
         </a>
       </li>
       <li>
@@ -49,7 +49,7 @@
         <a
           href="https://www.sqlite.org/index.html"
           target="_blank">
-          sqlite
+          SQLite
         </a>
       </li>
     </ul>
@@ -66,8 +66,6 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1, h2 {
   font-weight: normal;

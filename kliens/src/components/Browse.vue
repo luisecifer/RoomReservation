@@ -119,7 +119,7 @@
               </td>
           </template>
             <v-alert slot="no-results" :value="true" color="error" icon="warning">
-              Your search for "{{ search }}" found no results.
+              A keresés a "{{ search }}" kulcsszóra nem hozott eredményt.
             </v-alert>
           </v-data-table>
         </div>
@@ -213,7 +213,7 @@ export default {
       if (this.editedIndex > -1) {
         Object.assign(this.reservations[this.editedIndex], this.editedItem)
       } else {
-        his.reservations.push(this.editedItem)
+        this.reservations.push(this.editedItem)
       }
       this.close()
     },
